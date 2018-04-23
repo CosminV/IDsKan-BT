@@ -1,4 +1,4 @@
-package com.example.cosmin.kdocscanner;
+package com.kapsch.idsKan.kdocscanner;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

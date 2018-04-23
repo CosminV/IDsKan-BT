@@ -1,4 +1,4 @@
-package com.example.cosmin.kdocscanner;
+package com.kapsch.idsKan.kdocscanner;
 
 import android.Manifest;
 import android.app.Activity;
@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.icu.util.Output;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;

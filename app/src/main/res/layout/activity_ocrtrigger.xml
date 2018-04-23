@@ -4,7 +4,7 @@
     android:id="@+id/activity_ocrtrigger"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cosmin.kdocscanner.OCRTriggerActivity">
+    tools:context="com.kapsch.idsKan.kdocscanner.OCRTriggerActivity">
 
     <Button
         android:id="@+id/scanImageBtn"

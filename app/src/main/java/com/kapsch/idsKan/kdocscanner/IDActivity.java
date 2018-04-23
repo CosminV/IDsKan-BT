@@ -1,39 +1,24 @@
-package com.example.cosmin.kdocscanner;
+package com.kapsch.idsKan.kdocscanner;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.net.Uri;
-import android.net.http.HttpResponseCache;
-import android.os.AsyncTask;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatCallback;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.microblink.activity.BaseScanActivity;
@@ -44,37 +29,15 @@ import com.microblink.recognition.FeatureNotSupportedException;
 import com.microblink.recognition.InvalidLicenceKeyException;
 import com.microblink.recognizers.BaseRecognitionResult;
 import com.microblink.recognizers.RecognitionResults;
-import com.microblink.recognizers.blinkid.mrtd.MRTDRecognizerSettings;
 import com.microblink.recognizers.blinkid.romania.front.RomanianIDFrontSideRecognizerSettings;
-import com.microblink.recognizers.blinkocr.BlinkOCRRecognizerSettings;
-import com.microblink.recognizers.blinkocr.engine.BlinkOCREngineOptions;
-import com.microblink.recognizers.blinkocr.parser.generic.RawParserSettings;
 import com.microblink.recognizers.settings.RecognitionSettings;
 import com.microblink.recognizers.settings.RecognizerSettings;
 import com.microblink.view.recognition.ScanResultListener;
 import com.scanlibrary.ScanActivity;
 import com.scanlibrary.ScanConstants;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import Utils.ConvertUtils;
-
-import static android.R.attr.bitmap;
-import static android.R.attr.type;
 
 public class IDActivity extends Activity implements AppCompatCallback {
 

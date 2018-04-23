@@ -1,11 +1,10 @@
-package com.example.cosmin.kdocscanner;
+package com.kapsch.idsKan.kdocscanner;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.http.HttpResponseCache;
@@ -21,10 +20,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,11 +31,8 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.RunnableFuture;
 
-import Classes.UserAccount;
 import EmailAPI.SendMail;
-import Requests.RegisterRequest;
 import Utils.ConvertUtils;
 import Utils.DatabaseHelper;
 import Utils.ProgressDialogManager;

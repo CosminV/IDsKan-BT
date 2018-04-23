@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.example.cosmin.kdocscanner.R;
+import com.kapsch.idsKan.kdocscanner.R;
 
 import java.util.HashMap;
 import java.util.List;

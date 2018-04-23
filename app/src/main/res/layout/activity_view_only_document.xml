@@ -5,7 +5,7 @@
     android:id="@+id/activity_view_only_document"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cosmin.kdocscanner.ViewOnlyDocumentActivity">
+    tools:context="com.kapsch.idsKan.kdocscanner.ViewOnlyDocumentActivity">
 
     <include layout="@layout/app_toolbar"
         android:id="@+id/my_toolbar" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cosmin.kdocscanner.TextActivity">
+    tools:context="com.kapsch.idsKan.kdocscanner.TextActivity">
 
     <include layout="@layout/app_toolbar"
         android:id="@+id/my_toolbar" />
