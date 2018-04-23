@@ -18,14 +18,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     SQLiteDatabase db;
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "idsKan.db";
 
     private static final String USER_TABLE = "useraccounts";
     private static final String DOC_TABLE = "clients";
 
     private static final String CREATE_USERACCOUNTS = "create table "+USER_TABLE+"(email text unique not null, password text not null, name text not null, age id not null, location text not null, signature blob);";
-    private static final String CREATE_DOC = "create table "+DOC_TABLE+"(name text not null, surname text not null, id id not null, address text not null, flag id not null, latitude double, longitude double, signature blob);";
+    private static final String CREATE_DOC = "create table "+DOC_TABLE+"(name text not null, surname text not null, id id not null, nationality text not null, flag id not null, latitude real, longitude real, signature blob);";
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,9 +52,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("name", document.getName());
         contentValues.put("surname", document.getSurname());
         contentValues.put("id", document.getID());
-        contentValues.put("address", document.getAddress());
-        contentValues.put("lat", document.getLatitude());
-        contentValues.put("long", document.getLongitude());
+        contentValues.put("nationality", document.getNationality());
+        contentValues.put("latitude", document.getLatitude());
+        contentValues.put("longitude", document.getLongitude());
         if(document.getIsSigned() == true){
             contentValues.put("flag", 1);
         }else{
@@ -106,7 +106,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 document.setName(cursor.getString(0));
                 document.setSurname(cursor.getString(1));
                 document.setID(cursor.getString(2));
-                document.setAddress(cursor.getString(3));
+                document.setNationality(cursor.getString(3));
                 if(cursor.getInt(4) == 0){
                     document.setIsSigned(false);
                 }else{
@@ -121,7 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Document getParticularDocument(String id){
         SQLiteDatabase db = this.getReadableDatabase();
         Document document;
-        Cursor cursor = db.query(DOC_TABLE, new String[]{"name", "surname", "id", "address", "flag", "signature", "latitude", "longitude"}, "id=?", new String[]{String.valueOf(id)}, null, null, null, null);
+        Cursor cursor = db.query(DOC_TABLE, new String[]{"name", "surname", "id", "nationality", "flag", "signature", "latitude", "longitude"}, "id=?", new String[]{String.valueOf(id)}, null, null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
         if(cursor.getInt(4) == 0){

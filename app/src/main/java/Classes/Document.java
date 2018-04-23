@@ -6,16 +6,16 @@ public class Document {
     private String name;
     private String surname;
     private String id;
-    private String address;
+    private String nationality;
     private boolean isSigned;
     private double latitude;
     private double longitude;
 
-    public Document(String name, String surname, String id, String address, boolean isSigned, double latitude, double longitude){
+    public Document(String name, String surname, String id, String nationality, boolean isSigned, double latitude, double longitude){
         this.name = name;
         this.surname = surname;
         this.id = id;
-        this.address = address;
+        this.nationality = nationality;
         this.isSigned = isSigned;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -49,12 +49,12 @@ public class Document {
         this.id = id;
     }
 
-    public String getAddress(){
-        return this.address;
+    public String getNationality(){
+        return this.nationality;
     }
 
-    public void setAddress(String address){
-        this.address = address;
+    public void setNationality(String nationality){
+        this.nationality = nationality;
     }
 
     public boolean getIsSigned(){

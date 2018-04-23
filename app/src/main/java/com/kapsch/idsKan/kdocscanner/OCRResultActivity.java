@@ -212,65 +212,25 @@ public class OCRResultActivity extends AppCompatActivity {
         newClientButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AsyncTask.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        final String name = nameTextView.getText().toString();
-                        final String surname = surnameTextView.getText().toString();
-                        final String id = idTextView.getText().toString();
-                        final String address = addressTextView.getText().toString();
+                            final String name = nameTextView.getText().toString();
+                            final String surname = surnameTextView.getText().toString();
+                            final String id = idTextView.getText().toString();
+                            final String nationality = nationalityTextView.getText().toString();
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                pd = ProgressDialogManager.initiateProgressDialog("Creating New Client...", OCRResultActivity.this);
-                            }
-                        });
+                            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                            double longitude = location.getLongitude();
+                            double latitude = location.getLatitude();
 
-                        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-                        final LocationListener locationListener = new LocationListener(){
+                            Toast.makeText(getApplicationContext(), "Latitude: " + latitude + "\n Longitude: " + longitude + "", Toast.LENGTH_SHORT).show();
+                            //lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
 
-                            @Override
-                            public void onLocationChanged(Location location) {
-                                latitude = location.getLatitude();
-                                longitude = location.getLongitude();
+                            Document doc = new Document(name, surname, id, nationality, false, latitude, longitude);
+                            dbHelper.createDocument(doc);
 
-                                Toast.makeText(getApplicationContext(), "Latitude: " + latitude + "\n Longitude: " + longitude +"", Toast.LENGTH_SHORT).show();
-
-                            }
-
-                            @Override
-                            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-                            }
-
-                            @Override
-                            public void onProviderEnabled(String provider) {
-
-                            }
-
-                            @Override
-                            public void onProviderDisabled(String provider) {
-                                Toast.makeText(getApplicationContext(), "GPS Disabled. Please Enable to get your location!", Toast.LENGTH_SHORT).show();
-
-                            }
-                        };
-
-                        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
-
-                        Document doc = new Document(name, surname, id, address, false, latitude, longitude);
-                        dbHelper.createDocument(doc);
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ProgressDialogManager.destroyProgressDialog(pd);
-                                Toast.makeText(getApplicationContext(), "New Client created!", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
-            }
+                            Intent mainIntent = new Intent(OCRResultActivity.this, MainDrawer.class);
+                             startActivity(mainIntent);
+                        }
         });
     }
 

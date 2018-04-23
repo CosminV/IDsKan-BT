@@ -95,9 +95,10 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView25"
-        android:layout_alignStart="@+id/textView28"
-        android:id="@+id/textView29" />
+        android:id="@+id/textView29"
+        android:layout_alignBaseline="@+id/textView24"
+        android:layout_alignBottom="@+id/textView24"
+        android:layout_alignStart="@+id/textView28" />
 
     <TextView
         android:text="TextView"
@@ -123,16 +124,16 @@
         android:layout_alignStart="@+id/textView25"
         android:layout_below="@+id/textView25"
         android:layout_marginTop="12dp"
-        android:text="TextView" />
+        android:text="Latitude" />
 
     <TextView
         android:id="@+id/textView43"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_below="@+id/textView41"
         android:layout_alignStart="@+id/textView41"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@+id/textView41"
+        android:layout_marginTop="16dp"
+        android:text="Longitude" />
 
     <TextView
         android:id="@+id/textView45"
