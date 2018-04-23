@@ -7,7 +7,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId "com.example.cosmin.kdocscanner"
+        applicationId "com.kapsch.idsKan.kdocscanner"
         minSdkVersion 19
         targetSdkVersion 22
         versionCode 2
