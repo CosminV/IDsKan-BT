@@ -220,7 +220,7 @@ public class OCRResultActivity extends AppCompatActivity {
     }
 
 
-    // Integrare Server Kapsch
+    // Integrare Server Kapsch - Integration Server
     public void sendDataToIS() {
         newClientButton = (ImageButton) findViewById(R.id.newClientBtn);
         newClientButton.setOnClickListener(new View.OnClickListener() {
