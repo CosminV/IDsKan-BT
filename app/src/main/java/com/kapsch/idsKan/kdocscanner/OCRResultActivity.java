@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationListener;
 import android.net.http.HttpResponseCache;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
@@ -49,10 +51,13 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Classes.Document;
+import Utils.DatabaseHelper;
 import Utils.ProgressDialogManager;
 
 public class OCRResultActivity extends AppCompatActivity {
 
+    DatabaseHelper dbHelper = new DatabaseHelper(this);
     RecognitionResults results;
     ImageButton againButton;
     ImageButton createButton;
@@ -80,6 +85,7 @@ public class OCRResultActivity extends AppCompatActivity {
     private static final String SOAP_ACTION = "http://tempuri.org/IServiceAgent/AgentScanResult";
     private static final String NAMESPACE = "http://schemas.datacontract.org/2004/07/IDScan.Entities";
     private static final String METHOD_NAME = "AgentScanData";
+    double longitude, latitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,6 +201,70 @@ public class OCRResultActivity extends AppCompatActivity {
                 scanAgainIntent.putExtra("BitmapStringFromResultActivity", bitmapString);
                 scanAgainIntent.putExtra("retryFlag", true);
                 startActivity(scanAgainIntent);
+            }
+        });
+    }
+
+    public void sendDataToSQLite(){
+        newClientButton = (ImageButton) findViewById(R.id.newClientBtn);
+        newClientButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AsyncTask.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        final String name = nameTextView.getText().toString();
+                        final String surname = surnameTextView.getText().toString();
+                        final String id = idTextView.getText().toString();
+                        final String address = addressTextView.getText().toString();
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                pd = ProgressDialogManager.initiateProgressDialog("Creating New Client...", OCRResultActivity.this);
+                            }
+                        });
+
+                        final LocationListener locationListener = new LocationListener(){
+
+                            @Override
+                            public void onLocationChanged(Location location) {
+                                latitude = location.getLatitude();
+                                longitude = location.getLongitude();
+
+                                Toast.makeText(getApplicationContext(), "Latitude: " + latitude + "\n Longitude: " + longitude +"", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+                            }
+
+                            @Override
+                            public void onProviderEnabled(String provider) {
+
+                            }
+
+                            @Override
+                            public void onProviderDisabled(String provider) {
+                                Toast.makeText(getApplicationContext(), "GPS Disabled. Please Enable to get your location!", Toast.LENGTH_SHORT).show();
+
+                            }
+                        };
+
+                        Document doc = new Document(name, surname, id, address, false, latitude, longitude);
+                        dbHelper.createDocument(doc);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ProgressDialogManager.destroyProgressDialog(pd);
+                                Toast.makeText(getApplicationContext(), "New Client created!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
             }
         });
     }

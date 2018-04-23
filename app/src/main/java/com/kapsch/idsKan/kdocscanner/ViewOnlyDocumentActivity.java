@@ -31,15 +31,23 @@ public class ViewOnlyDocumentActivity extends AppCompatActivity {
         String id = getIntent().getStringExtra("ID");
         String address = getIntent().getStringExtra("Address");
         boolean sign = getIntent().getBooleanExtra("Sign", false);
+        double latitude = getIntent().getDoubleExtra("latitude", 0.0);
+        double longitude = getIntent().getDoubleExtra("longitude", 0.0);
+
         TextView nameTextView = (TextView) findViewById(R.id.textView26);
         TextView surnameTextView = (TextView) findViewById(R.id.textView99);
         TextView idTextView = (TextView) findViewById(R.id.textView28);
         TextView addressTextView = (TextView) findViewById(R.id.textView29);
         TextView signedTextView = (TextView) findViewById(R.id.textView30);
+        TextView latitudeTextView = (TextView) findViewById(R.id.textView47);
+        TextView longitudeTextView = (TextView) findViewById(R.id.textView45);
         nameTextView.setText(name);
         surnameTextView.setText(surname);
         idTextView.setText(String.valueOf(id));
         addressTextView.setText(address);
+        latitudeTextView.setText(latitude + "");
+        longitudeTextView.setText(longitude + "");
+
         if(sign) {
             signedTextView.setText("YES");
         }else{

@@ -146,6 +146,8 @@ public class DocHistoryActivity extends AppCompatActivity {
                 String retrievedID = document.getID();
                 String retrievedAddress = document.getAddress();
                 boolean retrievedSigned = document.getIsSigned();
+                double retrievedLatitude = document.getLatitude();
+                double retrievedLongitude = document.getLongitude();
 
                 Intent docViewIntent = new Intent(DocHistoryActivity.this, ViewOnlyDocumentActivity.class);
                 docViewIntent.putExtra("Name", retrievedName);
@@ -153,6 +155,8 @@ public class DocHistoryActivity extends AppCompatActivity {
                 docViewIntent.putExtra("ID", retrievedID);
                 docViewIntent.putExtra("Address", retrievedAddress);
                 docViewIntent.putExtra("Sign", retrievedSigned);
+                docViewIntent.putExtra("latitude", retrievedLatitude);
+                docViewIntent.putExtra("longitude", retrievedLongitude);
                 startActivity(docViewIntent);
                 return false;
             }
