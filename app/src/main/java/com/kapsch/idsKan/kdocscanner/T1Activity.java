@@ -117,10 +117,12 @@ public class T1Activity extends AppCompatActivity {
                     final String surname = surnameTxt.getText().toString();
                     final String id = idTxt.getText().toString();
                     final String address = addressTxt.getText().toString();
+                    final double latitude = 0.0;
+                    final double longitude = 0.0;
 
                     if (!nameTxt.equals("") && !surnameTxt.equals("") && !idTxt.equals("") && !addressTxt.equals("")) {
 
-                        Document document = new Document(name, surname, id, address, false);
+                        Document document = new Document(name, surname, id, address, false, latitude, longitude);
                         dbHelper.createDocument(document);
                         Toast.makeText(getApplicationContext(), "Document created succesfully", Toast.LENGTH_SHORT).show();
                         Intent docReviewIntent = new Intent(T1Activity.this, DocumentActivity.class);
@@ -156,6 +158,7 @@ public class T1Activity extends AppCompatActivity {
                     final String surname = surnameTxt.getText().toString();
                     final String id = idTxt.getText().toString();
                     final String address = addressTxt.getText().toString();
+
 
                     if (!nameTxt.equals("") && !surnameTxt.equals("") && !idTxt.equals("") && !addressTxt.equals("")) {
                         Intent docReviewIntent = new Intent(T1Activity.this, DocumentActivity.class);

@@ -8,13 +8,17 @@ public class Document {
     private String id;
     private String address;
     private boolean isSigned;
+    private double latitude;
+    private double longitude;
 
-    public Document(String name, String surname, String id, String address, boolean isSigned){
+    public Document(String name, String surname, String id, String address, boolean isSigned, double latitude, double longitude){
         this.name = name;
         this.surname = surname;
         this.id = id;
         this.address = address;
         this.isSigned = isSigned;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Document() {
@@ -59,5 +63,21 @@ public class Document {
 
     public void setIsSigned(boolean isSigned){
         this.isSigned = isSigned;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 }

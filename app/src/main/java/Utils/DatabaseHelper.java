@@ -19,13 +19,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "scannerDB.db";
+    private static final String DATABASE_NAME = "idsKan.db";
 
     private static final String USER_TABLE = "useraccounts";
-    private static final String DOC_TABLE = "documents";
+    private static final String DOC_TABLE = "clients";
 
     private static final String CREATE_USERACCOUNTS = "create table "+USER_TABLE+"(email text unique not null, password text not null, name text not null, age id not null, location text not null, signature blob);";
-    private static final String CREATE_DOC = "create table "+DOC_TABLE+"(name text not null, surname text not null, id id not null, address text not null, flag id not null, signature blob);";
+    private static final String CREATE_DOC = "create table "+DOC_TABLE+"(name text not null, surname text not null, id id not null, address text not null, flag id not null, latitude double, longitude double, signature blob);";
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -53,6 +53,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("surname", document.getSurname());
         contentValues.put("id", document.getID());
         contentValues.put("address", document.getAddress());
+        contentValues.put("lat", document.getLatitude());
+        contentValues.put("long", document.getLongitude());
         if(document.getIsSigned() == true){
             contentValues.put("flag", 1);
         }else{
@@ -119,13 +121,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Document getParticularDocument(String id){
         SQLiteDatabase db = this.getReadableDatabase();
         Document document;
-        Cursor cursor = db.query(DOC_TABLE, new String[]{"name", "surname", "id", "address", "flag", "signature"}, "id=?", new String[]{String.valueOf(id)}, null, null, null, null);
+        Cursor cursor = db.query(DOC_TABLE, new String[]{"name", "surname", "id", "address", "flag", "signature", "latitude", "longitude"}, "id=?", new String[]{String.valueOf(id)}, null, null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
         if(cursor.getInt(4) == 0){
-            document = new Document(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), false);
+            document = new Document(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), false, cursor.getDouble(6), cursor.getDouble(7));
         }else{
-            document = new Document(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), true);
+            document = new Document(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), true, cursor.getDouble(6), cursor.getDouble(7));
         }
 
 
