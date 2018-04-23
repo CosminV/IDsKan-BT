@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KDocScanner</string>
+    <string name="app_name">IDsKan</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->

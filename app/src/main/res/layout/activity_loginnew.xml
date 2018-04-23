@@ -136,7 +136,7 @@
             android:layout_marginBottom="20dp"
             android:layout_weight="2"
             android:gravity="center_vertical|center_horizontal"
-            android:text="©     Kapsch 2016"
+            android:text="©     Kapsch 2018"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <ImageButton
