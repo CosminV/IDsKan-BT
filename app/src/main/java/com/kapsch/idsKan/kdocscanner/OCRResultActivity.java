@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.http.HttpResponseCache;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
@@ -135,7 +136,8 @@ public class OCRResultActivity extends AppCompatActivity {
         showResult(results);
         scanAgain();
         sendDataToDB();
-        sendDataToIS();
+        sendDataToSQLite();
+        //sendDataToIS();
         createDocumentIndirect();
     }
 
@@ -225,6 +227,7 @@ public class OCRResultActivity extends AppCompatActivity {
                             }
                         });
 
+                        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
                         final LocationListener locationListener = new LocationListener(){
 
                             @Override
@@ -252,6 +255,8 @@ public class OCRResultActivity extends AppCompatActivity {
 
                             }
                         };
+
+                        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
 
                         Document doc = new Document(name, surname, id, address, false, latitude, longitude);
                         dbHelper.createDocument(doc);
