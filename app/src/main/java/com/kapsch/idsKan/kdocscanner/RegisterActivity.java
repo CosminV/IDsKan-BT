@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.http.HttpResponseCache;
@@ -32,6 +33,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Classes.UserAccount;
 import EmailAPI.SendMail;
 import Utils.ConvertUtils;
 import Utils.DatabaseHelper;
@@ -55,7 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.drawable.karrows);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        registerAction();
+        //registerAction();
+        SQLiteRegister();
         userSignature();
 
         EditText etEmail = (EditText) findViewById(R.id.emailTxt);
@@ -219,28 +222,33 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    /*public void SQLiteRegister(){
-        final EditText etEmail = (EditText) findViewById(R.id.emailTxt);
-        final EditText etPassword = (EditText) findViewById(R.id.passwordTxt);
-        final EditText etName = (EditText) findViewById(R.id.nameTxt);
+    public void SQLiteRegister(){
 
-        final String email = etEmail.getText().toString();
-        final String password = etPassword.getText().toString();
-        String name = etName.getText().toString();
+        ImageButton registerBtn = (ImageButton) findViewById(R.id.registerBtn);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText etEmail = (EditText) findViewById(R.id.emailTxt);
+                final EditText etPassword = (EditText) findViewById(R.id.passwordTxt);
 
-        UserAccount userAccount = new UserAccount(email, password, name, age, location);
-        ImageView signedImage = (ImageView) findViewById(R.id.userSignatureImageView);
-        Bitmap signedBitmap = ((BitmapDrawable)signedImage.getDrawable()).getBitmap();
-        byte[] signatureArray = convertUtils.bitmapToByteArray(signedBitmap);
-        dbHelper.registerUser(userAccount, signatureArray);
-        sendConfirmationEmail(email, password);
+                final String email = etEmail.getText().toString();
+                final String password = etPassword.getText().toString();
 
-        Toast.makeText(getApplicationContext(), "Registered succesfully", Toast.LENGTH_SHORT).show();
-        Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
-        loginIntent.putExtra("emailExtra", email);
-        loginIntent.putExtra("passwordExtra", password);
-        startActivity(loginIntent);
-    }*/
+                UserAccount userAccount = new UserAccount(email, password);
+                ImageView signedImage = (ImageView) findViewById(R.id.userSignatureImageView);
+                Bitmap signedBitmap = ((BitmapDrawable)signedImage.getDrawable()).getBitmap();
+                byte[] signatureArray = convertUtils.bitmapToByteArray(signedBitmap);
+                dbHelper.registerUser(userAccount, signatureArray);
+                sendConfirmationEmail(email, password);
+
+                Toast.makeText(getApplicationContext(), "Registered succesfully", Toast.LENGTH_SHORT).show();
+                Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                loginIntent.putExtra("emailExtra", email);
+                loginIntent.putExtra("passwordExtra", password);
+                startActivity(loginIntent);
+            }
+        });
+    }
 
     public boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";

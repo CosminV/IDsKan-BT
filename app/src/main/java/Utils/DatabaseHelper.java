@@ -18,13 +18,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     SQLiteDatabase db;
 
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "idsKan.db";
 
     private static final String USER_TABLE = "useraccounts";
     private static final String DOC_TABLE = "clients";
 
-    private static final String CREATE_USERACCOUNTS = "create table "+USER_TABLE+"(email text unique not null, password text not null, name text not null, age id not null, location text not null, signature blob);";
+    private static final String CREATE_USERACCOUNTS = "create table "+USER_TABLE+"(email text unique not null, password text not null, signature blob);";
     private static final String CREATE_DOC = "create table "+DOC_TABLE+"(name text not null, surname text not null, id id not null, nationality text not null, flag id not null, latitude real, longitude real, signature blob);";
 
     public DatabaseHelper(Context context){
@@ -36,9 +36,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("email", userAccount.getEmail());
         contentValues.put("password", userAccount.getPassword());
-        contentValues.put("name", userAccount.getName());
-        contentValues.put("age", userAccount.getAge());
-        contentValues.put("location", userAccount.getLocation());
         contentValues.put("signature", signArray);
 
         db.insert(USER_TABLE, null, contentValues);

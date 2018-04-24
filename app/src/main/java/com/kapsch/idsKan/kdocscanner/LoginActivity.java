@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(demoCB.isChecked()){
                         demoLogin();
                     }else{
-                        DBLogin();
+                        SQLiteLogin();
                     }
                 }else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
