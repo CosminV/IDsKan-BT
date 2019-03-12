@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IDsKan.iml" filepath="$PROJECT_DIR$/IDsKan.iml" />
-      <module fileurl="file://$PROJECT_DIR$/KDocScanner.iml" filepath="$PROJECT_DIR$/KDocScanner.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MobileScanningAndroid-master.iml" filepath="$PROJECT_DIR$/MobileScanningAndroid-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IDsKan-BT.iml" filepath="$PROJECT_DIR$/IDsKan-BT.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/scanlibrary/scanlibrary.iml" filepath="$PROJECT_DIR$/scanlibrary/scanlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/scanlibrary/scanlibrary.iml" filepath="$PROJECT_DIR$/scanlibrary/scanlibrary.iml" />
     </modules>
   </component>

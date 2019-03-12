@@ -130,10 +130,10 @@ public class IDActivity extends Activity implements AppCompatCallback {
                 exitCompletely();
                 break;
             case R.id.contactUs:
-                Toast.makeText(getApplicationContext(), "ContactUs", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Contact Us Toast", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bugReport:
-                Toast.makeText(getApplicationContext(), "Bug Report Activity!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Bug Report Activity Toast", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.halfRotateLeftBtn:
                 cameraImageView = (ImageView) findViewById(R.id.imageThumbnail);
