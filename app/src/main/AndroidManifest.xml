@@ -51,7 +51,6 @@
         <activity
             android:name="com.kapsch.idsKan.kdocscanner.MainDrawer"
             android:label="Main Menu" />
-        //android:theme="@style/MyMaterialTheme" />
         <activity
             android:name="com.kapsch.idsKan.kdocscanner.ViewOnlyDocumentActivity"
             android:parentActivityName="com.kapsch.idsKan.kdocscanner.DocHistoryActivity" />
