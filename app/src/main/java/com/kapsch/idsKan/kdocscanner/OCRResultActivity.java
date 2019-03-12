@@ -40,13 +40,13 @@ import com.microblink.recognizers.blinkid.romania.front.RomanianIDFrontSideRecog
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.ksoap2.SoapEnvelope;
+/*import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpResponseException;
 import org.ksoap2.transport.HttpTransportSE;
-import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserException;*/
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -235,7 +235,7 @@ public class OCRResultActivity extends AppCompatActivity {
     }
 
 
-    // Integrare Server Kapsch - Integration Server
+    /*// Integrare Server Kapsch - Integration Server
     public void sendDataToIS() {
         newClientButton = (ImageButton) findViewById(R.id.newClientBtn);
         newClientButton.setOnClickListener(new View.OnClickListener() {
@@ -332,7 +332,7 @@ public class OCRResultActivity extends AppCompatActivity {
                 }
             }
         });
-    }
+    }*/
 
 
             // metoda pentru transmiterea datelor unui client anterior OCR-izate catre baza de date.
